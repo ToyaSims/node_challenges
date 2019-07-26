@@ -1,24 +1,19 @@
-'use strict'
+'use strict';
 const fs = require('fs');
-class Visitor{
-  constructor (fullName, age, date, time, comments, assistant){
-      this.fullName= fullName;
-      this.age = age;
-      this.date = date;
-      this.time= time;
-      this.comments = comments;
-      this.assistant = assistant;
-  }
-  save(){
-      let file = JSON.stringify(this,null,2);
-      fs.writeFileSync('visitor1.json', file);
-      console.log(file)
-      // let file2 = JSON.stringify(this,null,2);
-      // fs.writeFileSync('student2.json', file2);
-      // console.log(file2)
-  }
-};
-let bob = new Visitor("bob suu",23,11,12, "yuuu","brun")
-bob.save();
-let alice = new Visitor("alice","Female", 20,"electical","tyuii")
-alice.save();
+class Visitor {
+   constructor(fullName, age, date, time, comments, visitee){
+       this.fullName = fullName;
+       this.age = age;
+       this.date = date;
+       this.time = time;
+       this.comments = comments;
+       this.visitee = visitee;
+   }
+   save(){
+       var count = 0;
+       let file = JSON.stringify(this,null,2);
+       fs.writeFileSync('visitor_' + count+1 + '.json', file);
+   }
+}
+ let visitor1 = new Visitor("abc def",12,13,14, "sky is blue","ghi");
+ visitor1.save();
