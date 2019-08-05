@@ -18,14 +18,14 @@ class Visitor {
   
    save() {
      this.Count();
-    var save = fs.writeFileSync("visitor" + count + ".json",`Fullname: ${this.name} ${this.surname} \n Date: ${this.date} \n Time: ${this.time}\n assistant: ${this.assistant}.`);
+    var save = fs.writeFile("visitor" + count + ".json",`Fullname: ${this.name} ${this.surname} \n Date: ${this.date} \n Time: ${this.time}\n assistant: ${this.assistant}.`);
    
    }
    load(i) {
        if(i < 1) {
            console.log("File does not  exist");
        }
-       var data =  fs.readFileSync("visitor" + i);
+       var data =  fs.readFile("visitor" + i);
        console.log(data);
    }
 }
