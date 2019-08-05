@@ -1,19 +1,37 @@
-'use strict';
-const fs = require('fs');
+
+var fs = require('fs');
+var count = 0;
 class Visitor {
-   constructor(fullName, age, date, time, comments, visitee){
-       this.fullName = fullName;
-       this.age = age;
+   constructor ( name,surname, date, time, assistant){
+       this.name = name ;
+       this.surname = surname;
        this.date = date;
        this.time = time;
-       this.comments = comments;
-       this.visitee = visitee;
+       this.assistant = assistant;
+  
    }
-   save(){
-       var count = 0;
-       let file = JSON.stringify(this,null,2);
-       fs.writeFileSync('visitor_' + count+1 + '.json', file);
+ 
+    Count() {
+       count += 1;
+  
+   }
+  
+   save() {
+     this.Count();
+    var save = fs.writeFileSync("visitor" + count + ".json",`Fullname: ${this.name} ${this.surname} \n Date: ${this.date} \n Time: ${this.time}\n assistant: ${this.assistant}.`);
+   
+   }
+   load(i) {
+       if(i < 1) {
+           console.log("File does not  exist");
+       }
+       var data =  fs.readFileSync("visitor" + i);
+       console.log(data);
    }
 }
- let visitor1 = new Visitor("abc def",12,13,14, "sky is blue","ghi");
- visitor1.save();
+var alice = new Visitor( "alice", "mere", 12/07/2019,1, "josh");
+var bob = new Visitor( "bob", "smith", 2/1/2019, 7, "sally");
+var charlie = new Visitor( "chralie", "puth", 6/2/2019, 8, "peter");
+alice.save();
+bob.save();
+charlie.save();
